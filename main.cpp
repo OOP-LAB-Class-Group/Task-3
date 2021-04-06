@@ -1,3 +1,7 @@
+// 2018556502 Muhammed Ali ARICI
+// 2019556461 Mahmut Can ÇINGI
+// 2020556061 Emre ULUSOY
+
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
