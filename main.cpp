@@ -9,19 +9,17 @@ using namespace std;
 
 class date {
   char *p;
-
- public:
+  public:
   date(char *s);
   ~date() {
     cout << "Destructing" << endl;
-    delete[] p;
   }
   char *get() { return p; }
+  friend void cleaner(date obj) { delete  obj.p; } // Delete [] p function.
 };
 
 date::date(char *s) {
   int l;
-
   l = strlen(s) + 1;
   p = new char[l];
   if (!p) {
@@ -38,14 +36,17 @@ void show(date x) {
 }
 
 int main() {
-  date sdate("04/06/21");
-  date xdate("00/00/00");
+  char sd[10]= "04/06/21";
+  char xd[10]= "00/00/00";
+  date sdate(sd); 
+  date xdate(xd); 
 
-  xdate = sdate;
   show(sdate);
   show(xdate);
-
+  xdate = sdate;
   cout << sdate.get() << " " << xdate.get() << endl;
+  
+  cleaner(xdate); // Delete [] p
 
   return 0;
 }
